@@ -1,0 +1,21 @@
+{
+    "id": 501,
+    "name": "房屋温度控制",
+    "trigger_type": { "SimpleRepeat": { "secs": 2, "nanos": 0 } },
+    "graph": {
+        "nodes": [{ "id": 1, "aoe_id": 501, "name": "温度超出阈值事件", "node_type": "ConditionNode", "expr": { "rpn": [{ "Number": 1.0 }] }, "timeout": 0 }, 
+                { "id": 2, "aoe_id": 501, "name": "温度超过下阈值事件", "node_type": "ConditionNode", "expr": { "rpn": [{ "Number": 1.0 }] }, "timeout": 0 }, 
+                { "id": 3, "aoe_id": 501, "name": "温度超过上阈值事件", "node_type": "ConditionNode", "expr": { "rpn": [{ "Number": 0.0 }] }, "timeout": 0 }, 
+                { "id": 4, "aoe_id": 501, "name": "结束节点", "node_type": "ConditionNode", "expr": { "rpn": [{ "Number": 1.0 }] }, "timeout": 0 }
+                ],
+        "node_holes": [],
+        "edge_property": "directed",
+        "edges": [
+            [0, 1, [0, { "aoe_id": 501, "name": "进入判断温度是否超过下阈值的节点", "source_node": 1, "target_node": 2, "failure_mode": "Ignore", "action": "None" }]],
+            [0, 2, [1, { "aoe_id": 501, "name": "进入判断温度是否超过上阈值的节点", "source_node": 1, "target_node": 3, "failure_mode": "Ignore", "action": "None" }]],
+            [1, 3, [0, { "aoe_id": 501, "name": "打开加热器", "source_node": 2, "target_node": 4, "failure_mode": "Ignore", "action": { "SetPoints": { "discrete_id": ["State_POINT"], "discrete_v": [{ "rpn": [{ "Number": 1.0 }] }], "analog_id": [], "analog_v": [] } } }]],
+            [2, 3, [0, { "aoe_id": 501, "name": "关闭加热器", "source_node": 3, "target_node": 4, "failure_mode": "Ignore", "action": { "SetPoints": { "discrete_id": ["State_POINT"], "discrete_v": [{ "rpn": [{ "Number": 0.0 }] }], "analog_id": [], "analog_v": [] } } }]]
+        ]
+    },
+    "variables": []
+}

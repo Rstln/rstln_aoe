@@ -1,17 +1,15 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import './index.css';
 import Graph from './App';
-import reportWebVitals from './reportWebVitals';
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<Graph aoe_path='./json_files/zq_aoe.json' aoe_result_path='./json_files/result_zq_aoe_CASE1.json'/>);
+root.render(<Graph aoe_path='./json_files/aoe_heater_controller' aoe_result_path='./json_files/aoe_result1'/>);
 
 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

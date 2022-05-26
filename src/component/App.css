@@ -15,6 +15,12 @@ text {
   font-size: 14px;
 }
 
+.node rect {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
 .node circle {
   stroke: black;
   fill: #CCC;
